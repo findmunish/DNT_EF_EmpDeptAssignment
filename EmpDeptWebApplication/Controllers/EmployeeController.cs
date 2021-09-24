@@ -18,10 +18,15 @@ namespace EmpDeptWebApplication.Controllers
         public IActionResult Index()
         {
             var employees = _db.Employees.ToList();
+            for (int i = 0; i < employees.Count; ++i)
+            {
+                employees[i].Department = _db.Departments.Find(employees[i].DeptId);
+            }
+
             return View(employees);
         }
 
-        public IActionResult Detail(int id)
+        public IActionResult Details(int id)
         {
             return _view(id, "View");
         }
@@ -35,13 +40,13 @@ namespace EmpDeptWebApplication.Controllers
         [HttpPost]
         public IActionResult Create(Employee empModel)
         {
-            ModelState.Remove("EmpId");
+            // ModelState.Remove("EmpId");
             if (ModelState.IsValid)
             {
                 _db.Add(empModel);
                 _db.SaveChanges();
 
-                RedirectToAction("View");
+                return RedirectToAction("Index");
             }
             ViewBag.Departments = _db.Departments.ToList();
             return View();
@@ -62,7 +67,7 @@ namespace EmpDeptWebApplication.Controllers
                 _db.Update(empModel);
                 _db.SaveChanges();
 
-                RedirectToAction("Index");
+                return RedirectToAction ("Index");
             }
             ViewBag.Departments = _db.Departments.ToList();
             return View();

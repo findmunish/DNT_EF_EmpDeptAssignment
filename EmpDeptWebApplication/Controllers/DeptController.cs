@@ -33,7 +33,7 @@ namespace EmpDeptWebApplication.Controllers
         [HttpPost]
         public IActionResult Create(Department deptModel)
         {
-            ModelState.Remove("DeptId");
+            // ModelState.Remove("DeptId");
             if (ModelState.IsValid)
             {
                 _db.Add(deptModel);
