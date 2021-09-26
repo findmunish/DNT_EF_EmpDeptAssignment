@@ -22,13 +22,13 @@
             else if ((string)ViewData["Title"] == "View")
             {
                 <div class="form-group">
-                    <label asp-for="EmpId" class="control-label"></label>
+                    <label asp-for="EmpId" class="control-label">Employee Id</label>
                     <input asp-for="EmpId" disabled="disabled" class="form-control" />
                     <span asp-validation-for="EmpId" class="text-danger"></span>
                 </div>
             }
             <div class="form-group">
-                <label asp-for="DeptId" class="control-label"></label>
+                <label asp-for="DeptId" class="control-label">Department</label>
                 @if ((string)ViewData["Title"] == "View")
                 {
                     <input asp-for="Department.Name" disabled="disabled" class="form-control" />
