@@ -17,11 +17,11 @@
     <div class="col-md-4">
         <form asp-action=@ViewData["Action"]>
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            @if (ViewData["Title"] == "Edit")
+            @if ((string)ViewData["Title"] == "Edit")
             {
                 <input asp-for="DeptId" hidden="hidden" class="form-control" />
             }
-            else if (ViewData["Title"] == "View")
+            else if ((string)ViewData["Title"] == "View")
             {
                 <div class="form-group">
                     <label asp-for="DeptId" class="control-label"></label>
@@ -31,7 +31,7 @@
             }
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
-                @if (ViewData["Title"] == "View")
+                @if ((string)ViewData["Title"] == "View")
                 {
                     <input asp-for="Name" disabled="disabled" class="form-control" />
                 }
