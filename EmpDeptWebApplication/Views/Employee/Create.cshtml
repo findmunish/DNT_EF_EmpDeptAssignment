@@ -31,11 +31,11 @@
                 <label asp-for="DeptId" class="control-label"></label>
                 @if ((string)ViewData["Title"] == "View")
                 {
-                    <input asp-for="DeptId" disabled="disabled" class="form-control" />
+                    <input asp-for="Department.Name" disabled="disabled" class="form-control" />
                 }
                 else
                 {
-                    <select asp-for="DeptId" class="form-control" asp-items="@(new SelectList(ViewBag.Departments,"DeptId", "Name"))">
+                    <select asp-for="DeptId" class="form-control" asp-items="@(new SelectList(ViewBag.Departments, "DeptId", "Name"))">
                         <option>--Select--</option>
                     </select>
                 }

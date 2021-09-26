@@ -87,6 +87,7 @@ namespace EmpDeptWebApplication.Controllers
         private IActionResult _view(int id, string viewType)
         {
             Employee empModel = _db.Employees.Find(id);
+            empModel.Department = _db.Departments.Find(empModel.DeptId);
             if (empModel == null)
             {
                 return RedirectToAction("Index");
